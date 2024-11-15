@@ -1,13 +1,13 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 
-def parse_html_to_dataframe(html_file, output_csv=None):
+def parse_html_to_dataframe(html_file, output_csv="C:/Users/mcfra/Desktop/parsed_data.csv"):
     """
     Parse the saved HTML file and extract data into a pandas DataFrame.
 
     Args:
         html_file (str): Path to the saved HTML file.
-        output_csv (str): (Optional) Path to save the DataFrame as a CSV file.
+        output_csv (str): Path to save the DataFrame as a CSV file (default: Desktop).
 
     Returns:
         pd.DataFrame: The extracted data as a DataFrame.
@@ -30,10 +30,9 @@ def parse_html_to_dataframe(html_file, output_csv=None):
         # Convert to DataFrame
         df = pd.DataFrame(articles)
 
-        # Save to CSV if output_csv is provided
-        if output_csv:
-            df.to_csv(output_csv, index=False, encoding='utf-8')
-            print(f"Data saved to {output_csv}")
+        # Save to CSV
+        df.to_csv(output_csv, index=False, encoding='utf-8')
+        print(f"Data saved to {output_csv}")
 
         return df
 
